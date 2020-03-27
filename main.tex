@@ -1,0 +1,103 @@
+\documentclass[a4paper,12pt,twoside]{scrreprt}
+% Autor der Vorlage: Klaus Rheinberger, FH Vorarlberg
+% 2017-02-20
+
+%% Hilfe: z.B.
+% empfohlener Einstieg: http://latex.tugraz.at/  
+% https://de.wikibooks.org/wiki/LaTeX-Kompendium:_Schnellkurs:_Erste_Schritte
+% https://de.wikibooks.org/wiki/LaTeX-Kompendium:_Schnellkurs
+% https://de.wikibooks.org/wiki/LaTeX-Kompendium
+
+%% Pakete:
+% Der Befehl \usepackage[latin9]{inputenc} ermöglicht die direkte Angabe von Umlauten. Übrigens lässt sich so auch das Euro-Zeichen direkt eingeben. Auf Betriebssystemen, wie zum Beispiel allen neueren Linux-Distributionen, verwendet man statt \usepackage[latin9]{inputenc} besser \usepackage[utf8]{inputenc}, auf Applesystemen verwendet man \usepackage[macce]{inputenc} (oder das für ältere Modelle gültige \usepackage[applemac]{inputenc}).
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}    % Silbentrennung bei Sonderzeichen
+\usepackage{graphicx}       % Bilder einbinden
+\usepackage[ngerman]{babel} % Deutsche Sprachanpassungen
+\usepackage{csquotes}       % When using babel or polyglossia with biblatex, loading csquotes is recommended to ensure that quoted texts are typeset according to the rules of your main language.
+\usepackage{acronym}  % für optionales Abkürzungsverzeichnis
+\usepackage{eurosym}  % z. B. \EUR{12345,68}
+\usepackage[linktocpage=true]{hyperref} % Links z. B. \href{https://www.wikibooks.org}{Wikibooks home}
+\usepackage[bindingoffset=8mm]{geometry}% Bindeverlust von 8mm einbeziehen. Mit dem geometry-Paket können Sie die Ränder auch ganz individuell anpassen.
+\usepackage{caption} % Abbildungslegenden
+\usepackage{import}
+\captionsetup{format=hang, justification=raggedright}
+
+\usepackage[style=alphabetic,citestyle=alphabetic,backend=bibtex]{biblatex}   % Literaturverweise
+%\usepackage[style=numeric,citestyle=numeric,backend=biber]{biblatex}
+% biblatex comes with a variety of built-in bibliography/citation style families (numeric, alphabetic, authoryear, authortitle, verbose), and there's a growing number of custom styles:
+% https://de.sharelatex.com/learn/Biblatex_citation_styles
+% https://de.sharelatex.com/learn/Biblatex_bibliography_styles
+
+% Bibtex-Datei
+\addbibresource{references.bib}
+
+
+%% Einstellungen
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}   % Tiefe der Gliederung im In haltsverzeichnis
+
+
+\begin{document}
+
+% Sperrvermerkseite (OPTIONAL)
+\import{pages/general/}{sperrvermerk.tex}
+
+% Titelblatt
+\cleardoublepage
+\import{pages/general/}{titlepage.tex}
+
+% Widmung (OPTIONAL)
+\newpage
+\import{pages/general/}{widmung.tex}
+
+% Kurzreferat
+\newpage
+\import{pages/general/}{kurzrefarat.tex}
+
+% Abstract
+\newpage
+\import{pages/general/}{abstract.tex}
+
+% Vorwort (OPTIONAL)
+\newpage
+\import{pages/general/}{vorwort.tex}
+
+% Inhaltsverzeichnis
+\cleardoublepage
+\tableofcontents
+
+% Abbildungsverzeichnis
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Abbildungsverzeichnis}
+\listoffigures
+
+% Tabellenverzeichnis
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Tabellenverzeichnis}
+\listoftables
+
+% Abkürzungsverzeichnis (OPTIONAL)
+\clearpage
+\import{pages/general/}{abkuerzungsverzeichnis.tex}
+
+% Kapitel
+\import{pages/chapters/}{chapter1.tex}
+\import{pages/chapters/}{chapter2.tex}
+\import{pages/chapters/}{chapter3.tex}
+
+% Literaturverzeichnis
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+\printbibliography
+
+% Anhang
+\import{pages/general/}{anhang.tex}
+
+% Eidesstattliche Erklärung
+\import{pages/general/}{eidesstattliche_erklaerung.tex}
+
+\end{document}
